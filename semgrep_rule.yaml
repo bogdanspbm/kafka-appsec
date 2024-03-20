@@ -1,0 +1,11 @@
+rules:
+  - id: jndi-user-login
+    languages:
+      - java
+    patterns:
+      - pattern: |
+          $CONTEXT = new javax.security.auth.login.LoginContext(..., (javax.security.auth.login.Configuration $CONFIG));
+          ...
+          $CONTEXT.login();
+    message: Found LoginContext login invocation with possible JNDI Injection
+    severity: WARNING
